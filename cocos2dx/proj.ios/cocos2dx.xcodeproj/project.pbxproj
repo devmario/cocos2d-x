@@ -267,6 +267,9 @@
 		AC83ABA516C9EE100091D69A /* CCTouchDispatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1551A624158F2ADE00E66CFE /* CCTouchDispatcher.cpp */; };
 		AC83ABA616C9EE100091D69A /* CCTouchHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1551A626158F2ADE00E66CFE /* CCTouchHandler.cpp */; };
 		AC83ABA716C9EE180091D69A /* cocos2dx.m in Sources */ = {isa = PBXBuildFile; fileRef = AC47221016C4D6FC00423A0D /* cocos2dx.m */; };
+		AC83ABB916C9F1E00091D69A /* libwebp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A3199AD16C0E3A200207637 /* libwebp.a */; };
+		AC83ABBD16C9F1F60091D69A /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC83ABBC16C9F1F60091D69A /* libcurl.a */; };
+		AC83ABBE16C9F1F60091D69A /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC83ABBC16C9F1F60091D69A /* libcurl.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -595,6 +598,7 @@
 		AC47222416C4D6FD00423A0D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AC47222616C4D6FD00423A0D /* cocos2dxTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cocos2dxTests.h; sourceTree = "<group>"; };
 		AC47222716C4D6FD00423A0D /* cocos2dxTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = cocos2dxTests.m; sourceTree = "<group>"; };
+		AC83ABBC16C9F1F60091D69A /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		D43F7F8915C7D8BA00D713FC /* CCTouch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCTouch.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -604,6 +608,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC47220A16C4D6FC00423A0D /* Foundation.framework in Frameworks */,
+				AC83ABB916C9F1E00091D69A /* libwebp.a in Frameworks */,
+				AC83ABBD16C9F1F60091D69A /* libcurl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -615,6 +621,7 @@
 				AC47221B16C4D6FD00423A0D /* UIKit.framework in Frameworks */,
 				AC47221C16C4D6FD00423A0D /* Foundation.framework in Frameworks */,
 				AC47221F16C4D6FD00423A0D /* libcocos2dx.a in Frameworks */,
+				AC83ABBE16C9F1F60091D69A /* libcurl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,6 +652,7 @@
 		1551A341158F2AB200E66CFE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AC83ABBC16C9F1F60091D69A /* libcurl.a */,
 				1A3199AD16C0E3A200207637 /* libwebp.a */,
 				1551A342158F2AB200E66CFE /* Foundation.framework */,
 				AC47221816C4D6FD00423A0D /* SenTestingKit.framework */,
@@ -1741,6 +1749,10 @@
 					"\"$(SRCROOT)/../../cocos2dx/support\"",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../platform/third_party/ios/libraries\"",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1776,6 +1788,10 @@
 					"\"$(SRCROOT)/../../cocos2dx/support\"",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../platform/third_party/ios/libraries\"",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1800,6 +1816,10 @@
 				GCC_PREFIX_HEADER = "cocos2dx/cocos2dx-Prefix.pch";
 				INFOPLIST_FILE = "cocos2dxTests/cocos2dxTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../platform/third_party/ios/libraries\"",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
@@ -1824,6 +1844,10 @@
 				GCC_PREFIX_HEADER = "cocos2dx/cocos2dx-Prefix.pch";
 				INFOPLIST_FILE = "cocos2dxTests/cocos2dxTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../platform/third_party/ios/libraries\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
