@@ -79,6 +79,11 @@ struct transformValues_;
 class CC_DLL CCSprite : public CCNode, public CCTextureProtocol, public CCRGBAProtocol
 {
 public:
+	
+	//*******************	for VBEngine	********************//
+	virtual void Update(float _tick, bool _is_top = false) {};
+	//*******************	for VBEngine	********************//
+	
     /// @{
     /// @name Creators
     
