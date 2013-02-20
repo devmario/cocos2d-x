@@ -82,6 +82,7 @@ public:
 	
 	//*******************	for VBEngine	********************//
 	virtual void Update(float _tick, bool _is_top = false) {};
+	virtual bool IsHitByPoint(CCPoint _point, bool _recursion = true) {return false;};
 	//*******************	for VBEngine	********************//
 	
     /// @{
