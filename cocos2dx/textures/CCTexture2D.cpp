@@ -452,6 +452,7 @@ bool CCTexture2D::initWithString(const char *text, const char *fontName, float f
         CCImage* pImage = new CCImage();
         CC_BREAK_IF(NULL == pImage);
         bRet = pImage->initWithString(text, (int)dimensions.width, (int)dimensions.height, eAlign, fontName, (int)fontSize);
+		ttf_text_size = pImage->ttf_text_size;
         CC_BREAK_IF(!bRet);
         bRet = initWithImage(pImage);
         CC_SAFE_RELEASE(pImage);

@@ -46,6 +46,8 @@ NS_CC_BEGIN
 class CC_DLL CCLabelTTF : public CCSprite, public CCLabelProtocol
 {
 public:
+	CCSize ttf_text_size;
+	
     CCLabelTTF();
     virtual ~CCLabelTTF();
     const char* description();    

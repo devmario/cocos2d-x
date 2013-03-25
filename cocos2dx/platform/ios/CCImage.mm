@@ -198,7 +198,7 @@ static CGSize _calculateStringSize(NSString *str, id font, CGSize *constrainSize
 #define ALIGN_CENTER 3
 #define ALIGN_BOTTOM 2
 
-static bool _initWithString(const char * pText, cocos2d::CCImage::ETextAlign eAlign, const char * pFontName, int nSize, tImageInfo* pInfo)
+static bool _initWithString(const char * pText, cocos2d::CCImage::ETextAlign eAlign, const char * pFontName, int nSize, tImageInfo* pInfo, CGSize* _size)
 {
     bool bRet = false;
     do 
@@ -267,7 +267,7 @@ static bool _initWithString(const char * pText, cocos2d::CCImage::ETextAlign eAl
         }
         
         unsigned char* data = new unsigned char[(int)(dim.width * dim.height * 4)];
-        memset(data, 0, (int)(dim.width * dim.height * 4));
+        memset(data, 0x88, (int)(dim.width * dim.height * 4));
         
         // draw text
         CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();    
@@ -302,8 +302,8 @@ static bool _initWithString(const char * pText, cocos2d::CCImage::ETextAlign eAl
             [FontLabelStringDrawingHelper drawInRect:str rect:CGRectMake(0, startH, dim.width, dim.height) withZFont:font lineBreakMode:(UILineBreakMode)UILineBreakModeWordWrap alignment:align];
         }
          */
-        [str drawInRect:CGRectMake(0, startH, dim.width, dim.height) withFont:font lineBreakMode:(UILineBreakMode)UILineBreakModeWordWrap alignment:align];
-        
+        *_size = [str drawInRect:CGRectMake(0, startH, dim.width, dim.height) withFont:font lineBreakMode:(UILineBreakMode)UILineBreakModeWordWrap alignment:align];
+		
         UIGraphicsPopContext();
         
         CGContextRelease(context);
@@ -469,11 +469,14 @@ bool CCImage::initWithString(
     tImageInfo info = {0};
     info.width = nWidth;
     info.height = nHeight;
-      
-    if (! _initWithString(pText, eAlignMask, pFontName, nSize, &info))
+	CGSize _size;
+    if (! _initWithString(pText, eAlignMask, pFontName, nSize, &info, &_size))
     {
         return false;
     }
+	ttf_text_size.width = _size.width;
+	ttf_text_size.height = _size.height;
+	
     m_nHeight = (short)info.height;
     m_nWidth = (short)info.width;
     m_nBitsPerComponent = info.bitsPerComponent;

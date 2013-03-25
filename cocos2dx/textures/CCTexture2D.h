@@ -105,6 +105,7 @@ typedef struct _ccTexParams {
 class CC_DLL CCTexture2D : public CCObject
 {
 public:
+	CCSize ttf_text_size;
     CCTexture2D();
     virtual ~CCTexture2D();
 

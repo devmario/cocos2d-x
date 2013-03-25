@@ -275,6 +275,7 @@ bool CCLabelTTF::updateTexture()
                         CC_SIZE_POINTS_TO_PIXELS(m_tDimensions), 
                         m_hAlignment,
                         m_vAlignment);
+	ttf_text_size = tex->ttf_text_size;
 	
     this->setTexture(tex);
     tex->release();

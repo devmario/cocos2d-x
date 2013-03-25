@@ -26,6 +26,7 @@ THE SOFTWARE.
 #define __CC_IMAGE_H__
 
 #include "cocoa/CCObject.h"
+#include "cocoa/CCGeometry.h"
 
 NS_CC_BEGIN
 
@@ -37,6 +38,8 @@ NS_CC_BEGIN
 class CC_DLL CCImage : public CCObject
 {
 public:
+	CCSize ttf_text_size;
+	
     CCImage();
     ~CCImage();
 
