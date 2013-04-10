@@ -44,6 +44,7 @@ THE SOFTWARE.
 #include "shaders/CCGLProgram.h"
 #include "shaders/ccGLStateCache.h"
 #include "shaders/CCShaderCache.h"
+#include <iostream>
 
 #if CC_ENABLE_CACHE_TEXTURE_DATA
     #include "CCTextureCache.h"
@@ -60,6 +61,8 @@ static CCTexture2DPixelFormat g_defaultAlphaPixelFormat = kCCTexture2DPixelForma
 // By default PVR images are treated as if they don't have the alpha channel premultiplied
 static bool PVRHaveAlphaPremultiplied_ = false;
 
+int __debug_num_tex = 0;
+
 CCTexture2D::CCTexture2D()
 : m_uPixelsWide(0)
 , m_uPixelsHigh(0)
@@ -71,10 +74,15 @@ CCTexture2D::CCTexture2D()
 , m_bPVRHaveAlphaPremultiplied(true)
 , m_pShaderProgram(NULL)
 {
+	__debug_num_tex++;
+	std::cout << "tex:" << __debug_num_tex << "\n";
 }
 
 CCTexture2D::~CCTexture2D()
 {
+	__debug_num_tex--;
+	std::cout << "tex:" << __debug_num_tex << "\n";
+	
 #if CC_ENABLE_CACHE_TEXTURE_DATA
     VolatileTexture::removeTexture(this);
 #endif
