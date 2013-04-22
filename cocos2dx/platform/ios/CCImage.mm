@@ -302,7 +302,13 @@ static bool _initWithString(const char * pText, cocos2d::CCImage::ETextAlign eAl
             [FontLabelStringDrawingHelper drawInRect:str rect:CGRectMake(0, startH, dim.width, dim.height) withZFont:font lineBreakMode:(UILineBreakMode)UILineBreakModeWordWrap alignment:align];
         }
          */
-        *_size = [str drawInRect:CGRectMake(0, startH, dim.width, dim.height) withFont:font lineBreakMode:(UILineBreakMode)UILineBreakModeWordWrap alignment:align];
+//		[str sizeWithFont:font constrainedToSize:CGSizeMake(dim.width, dim.height) lineBreakMode:NSLineBreakByWordWrapping];
+        
+//		- (CGSize)drawAtPoint:(CGPoint)point forWidth:(CGFloat)width withFont:(UIFont *)font minFontSize:(CGFloat)minFontSize actualFontSize:(CGFloat *)actualFontSize lineBreakMode:(NSLineBreakMode)lineBreakMode baselineAdjustment:(UIBaselineAdjustment)baselineAdjustment; // default is UIBaselineAdjustmentAlignBaselines
+		
+//		float _result_size;
+//		*_size = [str drawAtPoint:CGPointZero forWidth:dim.width withFont:font minFontSize:2.0 actualFontSize:&_result_size lineBreakMode:(UILineBreakMode)UILineBreakModeWordWrap baselineAdjustment:(UIBaselineAdjustment)align];
+		*_size = [str drawInRect:CGRectMake(0, startH, dim.width, dim.height) withFont:font lineBreakMode:(UILineBreakMode)UILineBreakModeWordWrap alignment:align];
 		
         UIGraphicsPopContext();
         
