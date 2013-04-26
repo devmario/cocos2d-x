@@ -61,7 +61,12 @@ static CCTexture2DPixelFormat g_defaultAlphaPixelFormat = kCCTexture2DPixelForma
 // By default PVR images are treated as if they don't have the alpha channel premultiplied
 static bool PVRHaveAlphaPremultiplied_ = false;
 
+#ifdef DEBUG
+//#define DEBUG_TEX_COUNT
+#ifdef DEBUG_TEX_COUNT
 int __debug_num_tex = 0;
+#endif
+#endif
 
 CCTexture2D::CCTexture2D()
 : m_uPixelsWide(0)
@@ -74,14 +79,22 @@ CCTexture2D::CCTexture2D()
 , m_bPVRHaveAlphaPremultiplied(true)
 , m_pShaderProgram(NULL)
 {
+#ifdef DEBUG
+#ifdef DEBUG_TEX_COUNT
 	__debug_num_tex++;
-	std::cout << "tex:" << __debug_num_tex << "\n";
+	std::cout << "CCTexture2D count:" << __debug_num_tex << "(new)\n";
+#endif
+#endif
 }
 
 CCTexture2D::~CCTexture2D()
 {
+#ifdef DEBUG
+#ifdef DEBUG_TEX_COUNT
 	__debug_num_tex--;
-	std::cout << "tex:" << __debug_num_tex << "\n";
+	std::cout << "CCTexture2D count:" << __debug_num_tex << "(delete)\n";
+#endif
+#endif
 	
 #if CC_ENABLE_CACHE_TEXTURE_DATA
     VolatileTexture::removeTexture(this);
