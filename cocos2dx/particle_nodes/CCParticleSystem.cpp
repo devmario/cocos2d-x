@@ -164,12 +164,11 @@ bool CCParticleSystem::init()
     return initWithTotalParticles(150);
 }
 
-bool CCParticleSystem::initWithFile(const char *plistFile)
+bool CCParticleSystem::initWithFileFullPath(const char *plistFile)
 {
     bool bRet = false;
-    m_sPlistFile = CCFileUtils::sharedFileUtils()->fullPathForFilename(plistFile);
-    CCDictionary *dict = CCDictionary::createWithContentsOfFileThreadSafe(m_sPlistFile.c_str());
-
+    CCDictionary *dict = CCDictionary::createWithContentsOfFileThreadSafe(plistFile);
+	
     CCAssert( dict != NULL, "Particles: file not found");
     
     // XXX compute path from a path, should define a function somewhere to do it
@@ -185,8 +184,14 @@ bool CCParticleSystem::initWithFile(const char *plistFile)
     }
     
     dict->release();
-
+	
     return bRet;
+}
+
+bool CCParticleSystem::initWithFile(const char *plistFile)
+{
+    m_sPlistFile = CCFileUtils::sharedFileUtils()->fullPathForFilename(plistFile);
+	return this->initWithFileFullPath(m_sPlistFile.c_str());
 }
 
 bool CCParticleSystem::initWithDictionary(CCDictionary *dictionary)

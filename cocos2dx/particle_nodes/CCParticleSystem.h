@@ -385,6 +385,9 @@ public:
     http://particledesigner.71squared.com/
     @since v0.99.3
     */
+	
+	bool initWithFileFullPath(const char *plistFile);
+	
     bool initWithFile(const char *plistFile);
 
     /** initializes a CCQuadParticleSystem from a CCDictionary.
