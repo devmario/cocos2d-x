@@ -116,6 +116,7 @@ CCParticleSystem::CCParticleSystem()
     ,m_uAtlasIndex(0)
     ,m_bTransformSystemDirty(false)
     ,m_uAllocatedParticles(0)
+	,m_bEnded(false)
 {
     modeA.gravity = CCPointZero;
     modeA.speed = 0;
@@ -747,6 +748,9 @@ void CCParticleSystem::update(float dt)
 
                 --m_uParticleCount;
 
+				if(m_uParticleCount == 0) {
+					m_bEnded = true;
+				}
                 if( m_uParticleCount == 0 && m_bIsAutoRemoveOnFinish )
                 {
                     this->unscheduleUpdate();
@@ -863,6 +867,11 @@ float CCParticleSystem::getTangentialAccel()
 {
     CCAssert( m_nEmitterMode == kCCParticleModeGravity, "Particle Mode should be Gravity");
     return modeA.tangentialAccel;
+}
+
+bool CCParticleSystem::getEnded()
+{
+    return m_bEnded;
 }
 
 void CCParticleSystem::setTangentialAccelVar(float t)
