@@ -150,7 +150,12 @@ static EAGLView *view = 0;
         view = self;
         
         originalRect_ = self.frame;
-        self.keyboardShowNotification = nil;
+        
+        NSString *reqSysVer = @"6.1.3";
+        NSString *currSysVer = [[UIDevice currentDevice] systemVersion];
+        if ([currSysVer compare:reqSysVer options:NSNumericSearch] != NSOrderedAscending) {
+            self.keyboardShowNotification = nil; //ios 5.1.1 버전 에서는 아래 코드에서 뻗는 문제발생함 ???
+        }
 		
 		if ([view respondsToSelector:@selector(setContentScaleFactor:)])
 		{
